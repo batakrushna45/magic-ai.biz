@@ -592,18 +592,17 @@
       <div id="step3" style="display:none">
         <div class="upi-screen">
           <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:8px">Scan this QR code to pay</p>
-          <!-- 
-            ✏️ EASY EDIT: Replace the QR code image below with YOUR actual UPI QR image.
-            Steps: Go to any UPI app → Profile → Share QR → Download → Upload that image here
-            Name it "upi-qr.png" and place it in the same folder as shop.html
-          -->
           <div class="qr-box">
-            <div class="qr-placeholder">
-              <div>📱</div>
-              <div style="font-size:0.7rem;font-weight:700;color:var(--text-mid);margin-top:8px">Your UPI QR<br>Here</div>
+            <img
+              src="upi-qr.png"
+              alt="UPI QR Code"
+              style="width:100%;height:100%;object-fit:contain;display:block"
+              onerror="this.style.display='none';document.getElementById('qrFallback').style.display='flex'"
+            />
+            <div id="qrFallback" style="display:none;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;background:var(--bg-warm)">
+              <div style="font-size:48px">📱</div>
+              <div style="font-size:0.72rem;font-weight:700;color:var(--text-mid);margin-top:8px;text-align:center">QR not found.<br>Upload upi-qr.png to GitHub root</div>
             </div>
-            <!-- Uncomment this line after placing your QR image: -->
-            <!-- <img src="upi-qr.png" alt="UPI QR Code"> -->
           </div>
           <div class="amount-display" id="payAmount">₹0</div>
           <p style="font-size:0.78rem;color:var(--text-light)">Pay exactly this amount</p>
@@ -675,17 +674,13 @@
 // ╚══════════════════════════════════════════════════════════════╝
 
 const STORE_CONFIG = {
-  // ✏️ YOUR UPI ID — Replace with your actual UPI ID
-  upiId: "yourname@okicici",
-  
-  // ✏️ WhatsApp number for support (with country code, no spaces)
-  whatsapp: "919876543210",
+  upiId: "9553299133@upi",
+  whatsapp: "919553299133",
 
-  // ✏️ Google Apps Script URL — You'll get this after Step 6 in the setup guide
-  // Replace the URL below with your deployed Apps Script web app URL
+  // ⚠️  PASTE YOUR APPS SCRIPT URL HERE after Step 7 of setup guide
   appsScriptUrl: "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec",
 
-  // ✏️ Shipping charge in INR (0 = free shipping)
+  // Shipping charge in INR (keep 0 for free shipping)
   shippingCharge: 0,
 };
 
