@@ -594,7 +594,7 @@
           <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:8px">Scan this QR code to pay</p>
           <div class="qr-box">
             <img
-              src="upi-qr.png"
+              src="upi-qr.PNG"
               alt="UPI QR Code"
               style="width:100%;height:100%;object-fit:contain;display:block"
               onerror="this.style.display='none';document.getElementById('qrFallback').style.display='flex'"
@@ -617,10 +617,22 @@
           </div>
 
           <div class="upi-apps">
-            <div class="upi-app"><div class="upi-app-icon">💚</div><div>PhonePe</div></div>
-            <div class="upi-app"><div class="upi-app-icon">🔵</div><div>GPay</div></div>
-            <div class="upi-app"><div class="upi-app-icon">🔷</div><div>Paytm</div></div>
-            <div class="upi-app"><div class="upi-app-icon">🟠</div><div>BHIM</div></div>
+            <div class="upi-app">
+              <div class="upi-app-icon" style="background:#5f259f;color:#fff;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;letter-spacing:-0.5px">Pe</div>
+              <div>PhonePe</div>
+            </div>
+            <div class="upi-app">
+              <div class="upi-app-icon" style="background:#4285F4;color:#fff;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800">GPay</div>
+              <div>GPay</div>
+            </div>
+            <div class="upi-app">
+              <div class="upi-app-icon" style="background:#00BAF2;color:#fff;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800">Paytm</div>
+              <div>Paytm</div>
+            </div>
+            <div class="upi-app">
+              <div class="upi-app-icon" style="background:#00529C;color:#fff;width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800">BHIM</div>
+              <div>BHIM</div>
+            </div>
           </div>
 
           <div class="payment-note">
@@ -969,7 +981,14 @@ function updateCartUI() {
   } else {
     cartItemsEl.innerHTML = cart.map(item => `
       <div class="cart-item">
-        <div class="cart-item-img">${item.emoji}</div>
+        <div class="cart-item-img" style="background:var(--brand-light);overflow:hidden;border-radius:8px">
+          <img
+            src="images/${item.id}.jpg"
+            alt="${item.name}"
+            style="width:100%;height:100%;object-fit:cover;display:block"
+            onerror="this.style.display='none';this.parentElement.innerHTML='<div style=\\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:24px\\'>${item.emoji}</div>'"
+          />
+        </div>
         <div class="cart-item-info">
           <div class="cart-item-name">${item.name}</div>
           <div class="cart-item-meta">${item.collection} · Size: ${item.size} · Qty: ${item.qty}</div>
