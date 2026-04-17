@@ -1160,37 +1160,41 @@ const preFilter = urlParams.get('collection');
 
 // ─────────────────────────────────────────────
 // LOAD LIVE STOCK FROM GOOGLE SHEETS
-// Falls back to hardcoded values if unavailable
+// Runs silently in background — never blocks shop
 // ─────────────────────────────────────────────
-async function loadLiveStock() {
+function loadLiveStock() {
   try {
     const url = STORE_CONFIG.appsScriptUrl + '?action=inventory';
-    const res  = await fetch(url);
-    const data = await res.json();
-    if (data.success && data.stock) {
-      // Merge live stock into PRODUCTS array
-      PRODUCTS.forEach(p => {
-        if (data.stock[p.id]) {
-          const s = data.stock[p.id];
-          p.sizes.S   = parseInt(s.S)   || 0;
-          p.sizes.M   = parseInt(s.M)   || 0;
-          p.sizes.L   = parseInt(s.L)   || 0;
-          p.sizes.XL  = parseInt(s.XL)  || 0;
-          p.sizes.XXL = parseInt(s.XXL) || 0;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.success && data.stock) {
+          PRODUCTS.forEach(p => {
+            if (data.stock[p.id]) {
+              const s = data.stock[p.id];
+              p.sizes.S   = parseInt(s.S)   || p.sizes.S;
+              p.sizes.M   = parseInt(s.M)   || p.sizes.M;
+              p.sizes.L   = parseInt(s.L)   || p.sizes.L;
+              p.sizes.XL  = parseInt(s.XL)  || p.sizes.XL;
+              p.sizes.XXL = parseInt(s.XXL) || p.sizes.XXL;
+            }
+          });
+          renderProducts(PRODUCTS); // Refresh with live stock
+          console.log('✅ Live stock loaded from Google Sheets');
         }
+      })
+      .catch(() => {
+        console.log('ℹ️ Using default stock — Sheets sync skipped');
       });
-      console.log('✅ Live stock loaded from Google Sheets');
-    }
   } catch (e) {
-    console.log('ℹ️ Using default stock values (Sheets unavailable)');
+    console.log('ℹ️ Using default stock — Sheets sync skipped');
   }
 }
 
 // ─────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', async () => {
-  // Show products immediately with default stock
+window.addEventListener('DOMContentLoaded', () => {
   renderProducts(PRODUCTS);
   document.getElementById('openCart').addEventListener('click', openCart);
 
@@ -1199,9 +1203,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (btn) filterProducts(preFilter, btn);
   }
 
-  // Then refresh with live stock from Sheets in the background
-  await loadLiveStock();
-  renderProducts(PRODUCTS); // Re-render with updated stock numbers
+  // Load live stock silently in background — does NOT block anything
+  loadLiveStock();
 });
 </script>
 </body>
