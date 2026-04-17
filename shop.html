@@ -1053,7 +1053,20 @@ function goToStep3() {
   setDot(3); document.getElementById('modalTitle').textContent = 'Pay via UPI';
 }
 
+// Prevents double submission if button clicked twice
+let orderSubmitting = false;
+
 async function confirmPayment() {
+  if (orderSubmitting) return; // Block second click
+  orderSubmitting = true;
+
+  // Disable button immediately to prevent double tap
+  const paidBtn = document.querySelector('.paid-btn');
+  if (paidBtn) {
+    paidBtn.disabled = true;
+    paidBtn.textContent = '⏳ Submitting order...';
+  }
+
   const orderId = 'MAI-' + Date.now().toString().slice(-6);
   document.getElementById('confirmedOrderId').textContent = orderId;
   document.getElementById('confirmedEmail').textContent = document.getElementById('custEmail').value;
@@ -1073,7 +1086,7 @@ async function confirmPayment() {
   };
 
   try {
-    // Build URL with order data as parameters — most reliable method for Google Apps Script
+    // Build URL with order data as parameters
     const params = new URLSearchParams({
       orderId:       orderData.orderId,
       name:          orderData.name,
@@ -1088,12 +1101,9 @@ async function confirmPayment() {
     });
     const url = STORE_CONFIG.appsScriptUrl + '?' + params.toString();
 
-    // Use an Image tag trick — works cross-origin without CORS issues
+    // Image tag method — works cross-origin without CORS issues
     const img = new Image();
     img.src = url;
-
-    // Also try fetch as backup
-    fetch(url, { mode: 'no-cors' }).catch(() => {});
 
   } catch (e) {
     console.warn('Could not reach Apps Script. Order ID: ' + orderId);
@@ -1106,6 +1116,7 @@ async function confirmPayment() {
 
 function clearCart() {
   cart = [];
+  orderSubmitting = false; // Reset for next order
   updateCartUI();
   document.getElementById('stepsIndicator').style.display = 'flex';
 }
@@ -1148,9 +1159,38 @@ const urlParams = new URLSearchParams(window.location.search);
 const preFilter = urlParams.get('collection');
 
 // ─────────────────────────────────────────────
+// LOAD LIVE STOCK FROM GOOGLE SHEETS
+// Falls back to hardcoded values if unavailable
+// ─────────────────────────────────────────────
+async function loadLiveStock() {
+  try {
+    const url = STORE_CONFIG.appsScriptUrl + '?action=inventory';
+    const res  = await fetch(url);
+    const data = await res.json();
+    if (data.success && data.stock) {
+      // Merge live stock into PRODUCTS array
+      PRODUCTS.forEach(p => {
+        if (data.stock[p.id]) {
+          const s = data.stock[p.id];
+          p.sizes.S   = parseInt(s.S)   || 0;
+          p.sizes.M   = parseInt(s.M)   || 0;
+          p.sizes.L   = parseInt(s.L)   || 0;
+          p.sizes.XL  = parseInt(s.XL)  || 0;
+          p.sizes.XXL = parseInt(s.XXL) || 0;
+        }
+      });
+      console.log('✅ Live stock loaded from Google Sheets');
+    }
+  } catch (e) {
+    console.log('ℹ️ Using default stock values (Sheets unavailable)');
+  }
+}
+
+// ─────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
+  // Show products immediately with default stock
   renderProducts(PRODUCTS);
   document.getElementById('openCart').addEventListener('click', openCart);
 
@@ -1158,6 +1198,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const btn = document.querySelector(`.filter-btn[data-filter="${preFilter}"]`);
     if (btn) filterProducts(preFilter, btn);
   }
+
+  // Then refresh with live stock from Sheets in the background
+  await loadLiveStock();
+  renderProducts(PRODUCTS); // Re-render with updated stock numbers
 });
 </script>
 </body>
