@@ -1,553 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Magic AI – Premium Design T-Shirts</title>
-  <meta name="description" content="Shop exclusive Magic AI designer T-shirts. 5 unique collections. Ships across India. Pay via UPI.">
+  <title>Magic AI – Arise. Awake. Achieve.</title>
+  <meta name="description" content="Shop exclusive Magic AI designer T-shirts. Premium collections. Ships across India. Pay via UPI.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* =============================================
-       MAGIC AI – DESIGN TOKENS
-       To change theme color: update --brand-primary
-       To change font: update --font-display
-    ============================================= */
     :root {
-      --brand-primary:   #FF6B00;
-      --brand-secondary: #FF8C38;
-      --brand-light:     #FFD9B8;
-      --brand-dark:      #C44D00;
-      --bg-warm:         #FFF8F0;
-      --bg-card:         #FFFFFF;
-      --text-dark:       #1C0A00;
-      --text-mid:        #6B3A1F;
-      --text-light:      #A0856E;
-      --gold:            #FFB400;
-      --font-display:    'Playfair Display', serif;
-      --font-body:       'DM Sans', sans-serif;
-      --radius:          14px;
-      --shadow:          0 8px 32px rgba(255,107,0,0.12);
+      --orange:#E85D00;--orange-dark:#B34500;--orange-light:#FFF0E6;
+      --gold:#C9930A;--gold-light:#FFF8E7;--white:#FFFFFF;--off-white:#FAFAFA;
+      --text:#1A1A1A;--text-mid:#555555;--text-light:#999999;--border:#EBEBEB;
+      --font-display:'Cormorant Garamond',serif;--font-body:'Outfit',sans-serif;--nav-h:64px;
     }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--white);color:var(--text)}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    .announce-bar{background:var(--text);color:#fff;text-align:center;padding:9px 20px;font-size:0.8rem;font-weight:500;letter-spacing:0.5px;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+    .announce-bar span{opacity:0.5}
+    .announce-bar strong{color:#FFB400}
 
-    html { scroll-behavior: smooth; }
+    header{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+    .header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:var(--nav-h);gap:24px}
+    .logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+    .logo-text .brand{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--orange);letter-spacing:1px}
+    .logo-text .tagline{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:1px}
 
-    body {
-      font-family: var(--font-body);
-      background: var(--bg-warm);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
+    .header-nav{display:flex}
+    .header-nav a{padding:0 14px;height:var(--nav-h);display:flex;align-items:center;font-size:0.85rem;font-weight:600;color:var(--text-mid);border-bottom:2px solid transparent;transition:all 0.2s}
+    .header-nav a:hover{color:var(--orange);border-bottom-color:var(--orange)}
 
-    /* ---- NAV ---- */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 5%;
-      background: rgba(255,248,240,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,107,0,0.1);
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.6rem; font-weight: 900;
-      color: var(--brand-primary);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-    .nav-logo span { color: var(--text-dark); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--text-mid);
-      font-weight: 500; font-size: 0.95rem;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--brand-primary); }
-    .nav-cta {
-      background: var(--brand-primary); color: #fff !important;
-      padding: 10px 22px; border-radius: 50px;
-      font-weight: 600 !important;
-      transition: background 0.2s, transform 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--brand-dark) !important; transform: translateY(-1px); }
+    .header-actions{display:flex;align-items:center;gap:8px}
+    .cart-pill{display:flex;align-items:center;gap:8px;background:var(--orange);color:#fff;padding:9px 20px;border-radius:4px;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;font-family:var(--font-body);transition:background 0.2s}
+    .cart-pill:hover{background:var(--orange-dark)}
 
-    /* ---- HERO ---- */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 120px 5% 80px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,107,0,0.08) 0%, transparent 70%);
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--brand-light); color: var(--brand-dark);
-      padding: 6px 16px; border-radius: 50px;
-      font-size: 0.85rem; font-weight: 600;
-      margin-bottom: 24px;
-      animation: fadeUp 0.6s ease both;
-    }
-    .hero-badge::before { content: '🔥'; }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 7vw, 6rem);
-      line-height: 1.05;
-      font-weight: 900;
-      color: var(--text-dark);
-      max-width: 900px;
-      animation: fadeUp 0.7s ease 0.1s both;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--brand-primary);
-    }
-    .hero p {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--text-mid);
-      max-width: 560px;
-      margin: 24px auto;
-      line-height: 1.7;
-      font-weight: 400;
-      animation: fadeUp 0.7s ease 0.2s both;
-    }
-    .hero-actions {
-      display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
-      animation: fadeUp 0.7s ease 0.3s both;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--brand-primary); color: #fff;
-      padding: 16px 36px; border-radius: 50px;
-      font-size: 1.05rem; font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 4px 20px rgba(255,107,0,0.35);
-    }
-    .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,0,0.4); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--brand-primary);
-      padding: 16px 36px; border-radius: 50px;
-      font-size: 1.05rem; font-weight: 600;
-      text-decoration: none;
-      border: 2px solid var(--brand-primary);
-      transition: all 0.2s;
-    }
-    .btn-secondary:hover { background: var(--brand-light); }
+    .hero{background:linear-gradient(135deg,#1A0A00 0%,#3D1800 40%,#6B2800 100%);min-height:560px;display:flex;align-items:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(232,93,0,0.12),transparent)}
+    .hero-content{max-width:1400px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1;width:100%}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+    .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
+    .hero h1{font-family:var(--font-display);font-size:clamp(3rem,5vw,5.5rem);font-weight:700;line-height:1;color:#fff;margin-bottom:16px}
+    .hero h1 em{font-style:normal;color:var(--gold)}
+    .hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.62);line-height:1.8;max-width:400px;margin-bottom:32px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn-primary{background:var(--orange);color:#fff;padding:14px 32px;border-radius:4px;font-size:0.88rem;font-weight:700;letter-spacing:0.5px;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+    .btn-primary:hover{background:var(--orange-dark);transform:translateY(-1px)}
+    .btn-outline{background:transparent;color:#fff;padding:14px 32px;border-radius:4px;border:1px solid rgba(255,255,255,0.25);font-size:0.88rem;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+    .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+    .hero-stats{display:flex;gap:32px;margin-top:44px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1)}
+    .hero-stat-num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--gold)}
+    .hero-stat-label{font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:2px;letter-spacing:0.5px}
+    .hero-logo-display{display:flex;align-items:center;justify-content:center}
+    .hero-logo-display img{width:min(360px,100%);border-radius:20px;box-shadow:0 32px 80px rgba(0,0,0,0.5);animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 
-    .hero-stats {
-      display: flex; gap: 48px; margin-top: 64px;
-      animation: fadeUp 0.7s ease 0.4s both;
-    }
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 2.2rem; font-weight: 900;
-      color: var(--brand-primary);
-    }
-    .stat-label { font-size: 0.85rem; color: var(--text-light); margin-top: 2px; }
+    .marquee-wrap{overflow:hidden;background:var(--orange);padding:11px 0}
+    .marquee-inner{display:flex;animation:marquee 22s linear infinite;white-space:nowrap}
+    .marquee-inner span{display:inline-flex;align-items:center;padding:0 24px;color:rgba(255,255,255,0.9);font-size:0.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+    .marquee-inner span::after{content:'✦';margin-left:24px;opacity:0.4}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* Floating T-shirt illustration */
-    .hero-visual {
-      position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
-      font-size: 140px; opacity: 0.07; pointer-events: none;
-      animation: float 6s ease-in-out infinite;
-    }
-    @keyframes float { 0%,100%{transform:translateY(-50%) rotate(-5deg)} 50%{transform:translateY(-55%) rotate(3deg)} }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .section{padding:72px 0}
+    .section-inner{max-width:1400px;margin:0 auto;padding:0 32px}
+    .section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px}
+    .section-eyebrow{font-size:0.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--text);line-height:1.1}
+    .section-title em{font-style:normal;color:var(--orange)}
+    .view-all{font-size:0.8rem;font-weight:700;color:var(--orange);display:flex;align-items:center;gap:4px;transition:gap 0.2s;white-space:nowrap}
+    .view-all:hover{gap:8px}
 
-    /* ---- COLLECTIONS STRIP ---- */
-    .collections-strip {
-      background: var(--brand-primary);
-      padding: 14px 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    .marquee-track {
-      display: inline-block;
-      animation: marquee 18s linear infinite;
-    }
-    .marquee-track span {
-      display: inline-block;
-      color: rgba(255,255,255,0.85);
-      font-size: 0.9rem; font-weight: 500;
-      padding: 0 32px;
-    }
-    .marquee-track span::before { content: '✦  '; color: rgba(255,255,255,0.5); }
-    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .collections-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .coll-card{border-radius:6px;overflow:hidden;background:var(--off-white);border:1px solid var(--border);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
+    .coll-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.1)}
+    .coll-img{height:260px;overflow:hidden;background:linear-gradient(135deg,#1A0A00,#6B2800);position:relative}
+    .coll-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+    .coll-card:hover .coll-img img{transform:scale(1.05)}
+    .coll-img-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:72px}
+    .coll-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 55%)}
+    .coll-overlay-text{position:absolute;bottom:16px;left:20px;color:#fff}
+    .coll-overlay-text h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700}
+    .coll-overlay-text p{font-size:0.75rem;opacity:0.75;margin-top:3px}
+    .coll-body{padding:14px 18px 18px;display:flex;align-items:center;justify-content:space-between}
+    .coll-price{font-size:0.88rem;font-weight:700;color:var(--text)}
+    .coll-price span{color:var(--orange)}
+    .coll-btn{background:var(--orange);color:#fff;padding:8px 16px;border-radius:4px;font-size:0.75rem;font-weight:700;transition:background 0.2s}
+    .coll-card:hover .coll-btn{background:var(--orange-dark)}
 
-    /* ---- SECTION WRAPPER ---- */
-    section { padding: 100px 5%; }
-    .section-label {
-      display: inline-block;
-      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--brand-primary);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 900; line-height: 1.1;
-      color: var(--text-dark);
-      max-width: 640px;
-    }
-    .section-title em { font-style: normal; color: var(--brand-primary); }
+    .features{background:var(--off-white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .features-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .feature{display:flex;align-items:center;gap:14px;padding:28px;border-right:1px solid var(--border)}
+    .feature:last-child{border-right:none}
+    .feature-icon{width:44px;height:44px;border-radius:50%;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .feature h4{font-size:0.85rem;font-weight:700}
+    .feature p{font-size:0.73rem;color:var(--text-light);margin-top:2px}
 
-    /* ---- DESIGN COLLECTIONS ---- */
-    #collections { background: #fff; }
-    .collections-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 24px; margin-top: 48px;
-    }
-    .collection-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--bg-warm);
-      border: 1px solid rgba(255,107,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      text-decoration: none; color: inherit;
-    }
-    .collection-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-    .card-img {
-      height: 200px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 80px;
-      background: linear-gradient(135deg, var(--brand-light), #fff);
-    }
-    .card-body { padding: 18px 20px; }
-    .card-name {
-      font-family: var(--font-display);
-      font-size: 1.15rem; font-weight: 700;
-      color: var(--text-dark);
-    }
-    .card-count { font-size: 0.85rem; color: var(--text-light); margin-top: 4px; }
-    .card-price {
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--brand-primary); margin-top: 10px;
-    }
-    .card-cta {
-      display: inline-block; margin-top: 14px;
-      background: var(--brand-primary); color: #fff;
-      padding: 8px 20px; border-radius: 50px;
-      font-size: 0.85rem; font-weight: 600;
-      transition: background 0.2s;
-    }
-    .collection-card:hover .card-cta { background: var(--brand-dark); }
+    .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .step-card{text-align:center;padding:32px 20px;background:var(--white);border:1px solid var(--border);border-radius:6px}
+    .step-num{width:52px;height:52px;border-radius:50%;background:var(--orange);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin:0 auto 14px}
+    .step-card h3{font-size:0.88rem;font-weight:700;margin-bottom:8px}
+    .step-card p{font-size:0.78rem;color:var(--text-light);line-height:1.6}
 
-    /* ---- HOW IT WORKS ---- */
-    #how-it-works { background: var(--bg-warm); }
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 32px; margin-top: 56px;
-    }
-    .step {
-      text-align: center;
-      padding: 36px 24px;
-      background: #fff;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,107,0,0.08);
-      transition: box-shadow 0.3s;
-    }
-    .step:hover { box-shadow: var(--shadow); }
-    .step-icon {
-      width: 64px; height: 64px;
-      background: var(--brand-light);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 28px; margin: 0 auto 20px;
-    }
-    .step-num {
-      position: absolute;
-      top: -10px; right: -10px;
-      background: var(--brand-primary); color: #fff;
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      font-size: 0.75rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .step-wrap { position: relative; width: fit-content; margin: 0 auto 20px; }
-    .step h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; }
-    .step p { font-size: 0.9rem; color: var(--text-mid); margin-top: 8px; line-height: 1.6; }
+    .brand-quote{background:linear-gradient(135deg,#1A0A00 0%,#3D1800 100%)}
+    .quote-inner{text-align:center;padding:80px 32px;max-width:800px;margin:0 auto}
+    .quote-logo{width:80px;border-radius:50%;margin:0 auto 24px;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+    .quote-text{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2.3rem);font-weight:600;color:#fff;line-height:1.4;margin-bottom:16px}
+    .quote-text em{font-style:normal;color:var(--gold)}
+    .quote-sub{font-size:0.78rem;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase}
 
-    /* ---- WHY US ---- */
-    #why-us {
-      background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-dark) 100%);
-      color: #fff;
-    }
-    #why-us .section-title { color: #fff; }
-    #why-us .section-title em { color: var(--gold); }
-    #why-us .section-label { color: rgba(255,255,255,0.7); }
-    .perks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px; margin-top: 48px;
-    }
-    .perk {
-      background: rgba(255,255,255,0.1);
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    .perk-icon { font-size: 2.2rem; margin-bottom: 14px; }
-    .perk h3 { font-size: 1.05rem; font-weight: 600; color: #fff; }
-    .perk p { font-size: 0.88rem; color: rgba(255,255,255,0.75); margin-top: 6px; line-height: 1.6; }
+    footer{background:var(--text);color:rgba(255,255,255,0.6)}
+    .footer-top{max-width:1400px;margin:0 auto;padding:52px 32px 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px}
+    .footer-brand-name{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--orange)}
+    .footer-brand-tag{font-size:0.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+    .footer-brand p{font-size:0.8rem;line-height:1.8;margin-top:12px;max-width:240px}
+    .footer-col h4{font-size:0.75rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:14px}
+    .footer-col ul{list-style:none}
+    .footer-col ul li{margin-bottom:9px}
+    .footer-col ul a{font-size:0.8rem;color:rgba(255,255,255,0.5);transition:color 0.2s}
+    .footer-col ul a:hover{color:var(--orange)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding:18px 32px;max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem}
+    .footer-bottom a{color:var(--orange)}
+    .upi-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,93,0,0.15);color:var(--orange);padding:5px 12px;border-radius:20px;font-size:0.72rem;font-weight:600;border:1px solid rgba(232,93,0,0.2)}
 
-    /* ---- FOOTER ---- */
-    footer {
-      background: var(--text-dark);
-      color: rgba(255,255,255,0.7);
-      padding: 60px 5% 32px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 40px; margin-bottom: 48px;
-    }
-    .footer-brand .nav-logo { font-size: 1.4rem; color: var(--brand-secondary); }
-    .footer-brand p { font-size: 0.88rem; margin-top: 12px; line-height: 1.7; max-width: 280px; }
-    footer h4 { color: #fff; font-size: 0.95rem; font-weight: 600; margin-bottom: 16px; }
-    footer ul { list-style: none; }
-    footer ul li { margin-bottom: 10px; }
-    footer ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-    footer ul a:hover { color: var(--brand-secondary); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.82rem;
-    }
-    .footer-bottom a { color: var(--brand-secondary); text-decoration: none; }
-    .upi-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,107,0,0.15); color: var(--brand-secondary);
-      padding: 6px 14px; border-radius: 50px;
-      font-size: 0.82rem; font-weight: 600;
-      border: 1px solid rgba(255,107,0,0.3);
-    }
-
-    /* ---- RESPONSIVE ---- */
-    @media (max-width: 768px) {
-      .hero-visual { display: none; }
-      .nav-links { display: none; }
-      .hero-stats { gap: 28px; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    }
+    @media(max-width:1024px){.collections-grid{grid-template-columns:1fr 1fr}.features-grid{grid-template-columns:1fr 1fr}.feature{border-bottom:1px solid var(--border)}.footer-top{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.hero-content{grid-template-columns:1fr;text-align:center}.hero-logo-display{display:none}.hero-stats{justify-content:center}.hero-actions{justify-content:center}.header-nav{display:none}.header-inner{padding:0 16px}.collections-grid{grid-template-columns:1fr}.steps-grid{grid-template-columns:1fr 1fr}.footer-top{grid-template-columns:1fr}.announce-bar span{display:none}}
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="nav-logo" href="index.html">Magic<span>AI</span></a>
-  <ul class="nav-links">
-    <li><a href="#collections">Collections</a></li>
-    <li><a href="#how-it-works">How It Works</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="shop.html" class="nav-cta">Shop Now →</a></li>
-  </ul>
-</nav>
+<div class="announce-bar">
+  <div>🚚 <strong>Free Shipping</strong> on all orders across India</div>
+  <span>|</span>
+  <div>📱 Pay via <strong>UPI · GPay · PhonePe · Paytm</strong></div>
+  <span>|</span>
+  <div>✨ <strong>New Collection</strong> Now Live</div>
+</div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-visual">👕</div>
-  <div class="hero-badge">New Collection — Now Live!</div>
-  <h1>Wear the <em>Magic</em> of<br>Original Design</h1>
-  <p>2,500+ exclusive T-shirts across 5 stunning design collections. Premium quality, delivered to your door. Pay easy with UPI.</p>
-  <div class="hero-actions">
-    <a href="shop.html" class="btn-primary">🛍️ Shop Now</a>
-    <a href="#collections" class="btn-secondary">See Collections</a>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <img src="logo.jpeg" alt="Magic AI Logo" class="logo-img" onerror="this.style.display='none'"/>
+      <div class="logo-text">
+        <div class="brand">MAGIC AI</div>
+        <div class="tagline">Arise · Awake · Achieve</div>
+      </div>
+    </a>
+    <nav class="header-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">All T-Shirts</a>
+      <a href="shop.html?collection=dr-series">DR Series</a>
+      <a href="shop.html?collection=star-collection">Star Collection</a>
+      <a href="shop.html?collection=special-edition">Special Edition</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-pill" onclick="window.location='shop.html'">
+        🛍️ Shop Now
+      </button>
+    </div>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">2,500+</div><div class="stat-label">T-Shirts in Stock</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Unique Collections</div></div>
-    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">UPI / QR Pay</div></div>
-    <div class="stat"><div class="stat-num">₹INR</div><div class="stat-label">India Pricing</div></div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">New Collection 2025</div>
+      <h1>Wear the<br><em>Magic.</em><br>Own the Moment.</h1>
+      <p class="hero-sub">Exclusive designer T-shirts crafted for those who dare to rise. Premium quality. Bold identity. Delivered across India.</p>
+      <div class="hero-actions">
+        <a href="shop.html" class="btn-primary">Shop All Collections →</a>
+        <a href="#collections" class="btn-outline">Explore Designs</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">2,500+</div><div class="hero-stat-label">Pieces in Stock</div></div>
+        <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Collections</div></div>
+        <div><div class="hero-stat-num">₹0</div><div class="hero-stat-label">Shipping</div></div>
+      </div>
+    </div>
+    <div class="hero-logo-display">
+      <img src="logo.jpeg" alt="Magic AI – Arise Awake Achieve" onerror="this.style.display='none'"/>
+    </div>
   </div>
 </section>
 
-<!-- MARQUEE STRIP -->
-<div class="collections-strip">
-  <div class="marquee-track">
-    <span>DR Series</span><span>Star Collection</span><span>Special Edition</span><span>20 DR Black</span><span>Rising Star</span><span>Super Star</span><span>Magic Jacket</span><span>Fattu Faddu</span><span>Sapphire Star</span>
-    <span>DR Series</span><span>Star Collection</span><span>Special Edition</span><span>20 DR Black</span><span>Rising Star</span><span>Super Star</span><span>Magic Jacket</span><span>Fattu Faddu</span><span>Sapphire Star</span>
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>DR Series</span><span>Star Collection</span><span>Special Edition</span>
+    <span>20 DR Black</span><span>Rising Star</span><span>Super Star</span>
+    <span>Magic Jacket</span><span>Fattu Faddu</span><span>Sapphire Star</span>
+    <span>Player of the Month</span><span>Free Shipping</span><span>Pay via UPI</span>
+    <span>DR Series</span><span>Star Collection</span><span>Special Edition</span>
+    <span>20 DR Black</span><span>Rising Star</span><span>Super Star</span>
+    <span>Magic Jacket</span><span>Fattu Faddu</span><span>Sapphire Star</span>
+    <span>Player of the Month</span><span>Free Shipping</span><span>Pay via UPI</span>
   </div>
 </div>
 
-<!-- COLLECTIONS -->
-<section id="collections">
-  <span class="section-label">Our Collections</span>
-  <h2 class="section-title">3 Iconic <em>Design</em><br>Collections</h2>
-
-  <div class="collections-grid">
-
-    <a href="shop.html?collection=dr-series" class="collection-card">
-      <div class="card-img" style="padding:0;overflow:hidden">
-        <img src="images/MG01.jpg" alt="DR Series"
-          style="width:100%;height:100%;object-fit:cover"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,var(--brand-light),#fff)">👕</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">DR Series</div>
-        <div class="card-count">3 designs · Black, Blue, Red</div>
-        <div class="card-price">From ₹3,300</div>
-        <div class="card-cta">View Collection →</div>
-      </div>
-    </a>
-
-    <a href="shop.html?collection=star-collection" class="collection-card">
-      <div class="card-img" style="padding:0;overflow:hidden">
-        <img src="images/MG04.jpg" alt="Star Collection"
-          style="width:100%;height:100%;object-fit:cover"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,var(--brand-light),#fff)">⭐</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Star Collection</div>
-        <div class="card-count">4 designs · Rising Star, Super Star & more</div>
-        <div class="card-price">From ₹2,300</div>
-        <div class="card-cta">View Collection →</div>
-      </div>
-    </a>
-
-    <a href="shop.html?collection=special-edition" class="collection-card">
-      <div class="card-img" style="padding:0;overflow:hidden">
-        <img src="images/MG08.jpg" alt="Special Edition"
-          style="width:100%;height:100%;object-fit:cover"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:80px;background:linear-gradient(135deg,var(--brand-light),#fff)">🔥</div>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Special Edition</div>
-        <div class="card-count">2 designs · Fattu Faddu & Magic Jacket</div>
-        <div class="card-price">From ₹2,300</div>
-        <div class="card-cta">View Collection →</div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how-it-works">
-  <span class="section-label">The Process</span>
-  <h2 class="section-title">Buy in <em>3 Easy</em> Steps</h2>
-  <div class="steps-grid">
-    <div class="step">
-      <div class="step-wrap">
-        <div class="step-icon">👕</div>
-        <div class="step-num">1</div>
-      </div>
-      <h3>Pick Your Design</h3>
-      <p>Browse 3 collections, choose your favourite design and select your size (S to XXL).</p>
+<section class="section" id="collections">
+  <div class="section-inner">
+    <div class="section-header">
+      <div><div class="section-eyebrow">Our Collections</div><h2 class="section-title">Shop by <em>Collection</em></h2></div>
+      <a href="shop.html" class="view-all">View All →</a>
     </div>
-    <div class="step">
-      <div class="step-wrap">
-        <div class="step-icon">📝</div>
-        <div class="step-num">2</div>
-      </div>
-      <h3>Fill Your Details</h3>
-      <p>Enter your name, email, phone and delivery address. Takes less than 60 seconds.</p>
-    </div>
-    <div class="step">
-      <div class="step-wrap">
-        <div class="step-icon">📱</div>
-        <div class="step-num">3</div>
-      </div>
-      <h3>Pay via UPI</h3>
-      <p>Scan the QR code with any UPI app — GPay, PhonePe, Paytm, BHIM — and done!</p>
-    </div>
-    <div class="step">
-      <div class="step-wrap">
-        <div class="step-icon">📧</div>
-        <div class="step-num">4</div>
-      </div>
-      <h3>Get Confirmation</h3>
-      <p>Once payment is verified, a confirmation email lands in your inbox instantly.</p>
+    <div class="collections-grid">
+      <a href="shop.html?collection=dr-series" class="coll-card">
+        <div class="coll-img">
+          <img src="images/MG01.jpg" alt="DR Series" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="coll-img-fallback" style="display:none">👕</div>
+          <div class="coll-overlay"></div>
+          <div class="coll-overlay-text"><h3>DR Series</h3><p>3 designs · Black, Blue, Red</p></div>
+        </div>
+        <div class="coll-body"><div class="coll-price">From <span>₹3,300</span></div><div class="coll-btn">Shop Now</div></div>
+      </a>
+      <a href="shop.html?collection=star-collection" class="coll-card">
+        <div class="coll-img">
+          <img src="images/MG04.jpg" alt="Star Collection" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="coll-img-fallback" style="display:none">⭐</div>
+          <div class="coll-overlay"></div>
+          <div class="coll-overlay-text"><h3>Star Collection</h3><p>4 designs · Rising Star, Super Star & more</p></div>
+        </div>
+        <div class="coll-body"><div class="coll-price">From <span>₹2,300</span></div><div class="coll-btn">Shop Now</div></div>
+      </a>
+      <a href="shop.html?collection=special-edition" class="coll-card">
+        <div class="coll-img">
+          <img src="images/MG08.jpg" alt="Special Edition" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <div class="coll-img-fallback" style="display:none">🔥</div>
+          <div class="coll-overlay"></div>
+          <div class="coll-overlay-text"><h3>Special Edition</h3><p>Fattu Faddu & Magic Jacket</p></div>
+        </div>
+        <div class="coll-body"><div class="coll-price">From <span>₹2,300</span></div><div class="coll-btn">Shop Now</div></div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
-<section id="why-us">
-  <span class="section-label">Why Magic AI</span>
-  <h2 class="section-title">Quality You Can<br><em>Feel</em> & Trust</h2>
-  <div class="perks-grid">
-    <div class="perk">
-      <div class="perk-icon">🧵</div>
-      <h3>Premium Fabric</h3>
-      <p>100% bio-washed cotton. Soft, durable, and stays vibrant wash after wash.</p>
+<div class="features">
+  <div class="section-inner" style="padding:0">
+    <div class="features-grid">
+      <div class="feature"><div class="feature-icon">🚚</div><div><h4>Free Delivery</h4><p>Pan-India, no minimum order</p></div></div>
+      <div class="feature"><div class="feature-icon">📱</div><div><h4>UPI Payment</h4><p>GPay · PhonePe · Paytm · BHIM</p></div></div>
+      <div class="feature"><div class="feature-icon">🎨</div><div><h4>Original Designs</h4><p>Exclusively by Magic AI team</p></div></div>
+      <div class="feature"><div class="feature-icon">✅</div><div><h4>Premium Quality</h4><p>100% bio-washed cotton</p></div></div>
     </div>
-    <div class="perk">
-      <div class="perk-icon">🎨</div>
-      <h3>Original Designs</h3>
-      <p>Every design is exclusively created by the Magic AI team. You won't find these anywhere else.</p>
+  </div>
+</div>
+
+<section class="section" style="background:var(--off-white)">
+  <div class="section-inner">
+    <div class="section-header">
+      <div><div class="section-eyebrow">Simple Process</div><h2 class="section-title">How to <em>Order</em></h2></div>
     </div>
-    <div class="perk">
-      <div class="perk-icon">🚚</div>
-      <h3>Pan-India Shipping</h3>
-      <p>Delivered anywhere in India. Fast processing, reliable courier partners.</p>
-    </div>
-    <div class="perk">
-      <div class="perk-icon">💸</div>
-      <h3>Easy UPI Payment</h3>
-      <p>No card required. Simply scan & pay. Instant confirmation. 100% secure.</p>
-    </div>
-    <div class="perk">
-      <div class="perk-icon">📦</div>
-      <h3>Live Stock Tracking</h3>
-      <p>Quantities update in real-time. When it's sold out, it's gone — so shop quick!</p>
-    </div>
-    <div class="perk">
-      <div class="perk-icon">💬</div>
-      <h3>WhatsApp Support</h3>
-      <p>Questions? Message us on WhatsApp for fast, friendly customer support.</p>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">1</div><h3>Pick Your Design</h3><p>Browse 3 collections, choose your T-shirt and select your size.</p></div>
+      <div class="step-card"><div class="step-num">2</div><h3>Fill Your Details</h3><p>Enter name, email, phone and delivery address in under 60 seconds.</p></div>
+      <div class="step-card"><div class="step-num">3</div><h3>Scan & Pay UPI</h3><p>Scan the QR code with any UPI app — GPay, PhonePe, Paytm or BHIM.</p></div>
+      <div class="step-card"><div class="step-num">4</div><h3>Get Confirmation</h3><p>Payment verified → email sent → order dispatched in 1–2 working days.</p></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="brand-quote">
+  <div class="quote-inner">
+    <img src="logo.jpeg" alt="Magic AI" class="quote-logo" onerror="this.style.display='none'"/>
+    <div class="quote-text">"Every T-shirt tells a story of someone who chose to <em>Arise, Awake and Achieve.</em>"</div>
+    <div class="quote-sub">— The Magic AI Team</div>
+    <a href="shop.html" class="btn-primary" style="display:inline-flex;margin-top:32px">Shop the Collection →</a>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-grid">
+  <div class="footer-top">
     <div class="footer-brand">
-      <a class="nav-logo" href="index.html">Magic<span style="color:#fff">AI</span></a>
-      <p>Exclusive designer T-shirts for people who dare to stand out. Powered by passion, made in India.</p>
-      <div class="upi-badge" style="margin-top:16px">📱 UPI / QR Pay Accepted</div>
+      <div class="logo-wrap" style="gap:10px;display:flex;align-items:center">
+        <img src="logo.jpeg" alt="Magic AI" style="width:38px;height:38px;border-radius:50%;object-fit:cover" onerror="this.style.display='none'"/>
+        <div><div class="footer-brand-name">MAGIC AI</div><div class="footer-brand-tag">Arise · Awake · Achieve</div></div>
+      </div>
+      <p>Exclusive designer T-shirts for people who dare to rise. Crafted with passion. Made in India.</p>
+      <div class="upi-tag" style="margin-top:14px">📱 UPI · QR Pay Accepted</div>
     </div>
-    <div>
-      <h4>Quick Links</h4>
+    <div class="footer-col">
+      <h4>Shop</h4>
       <ul>
-        <li><a href="shop.html">Shop All</a></li>
-        <li><a href="#collections">Collections</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#why-us">About Us</a></li>
+        <li><a href="shop.html">All T-Shirts</a></li>
+        <li><a href="shop.html?collection=dr-series">DR Series</a></li>
+        <li><a href="shop.html?collection=star-collection">Star Collection</a></li>
+        <li><a href="shop.html?collection=special-edition">Special Edition</a></li>
       </ul>
     </div>
-    <div>
+    <div class="footer-col">
       <h4>Help</h4>
       <ul>
+        <li><a href="#">Size Guide</a></li>
         <li><a href="#">Shipping Policy</a></li>
         <li><a href="#">Returns & Exchange</a></li>
-        <li><a href="#">Size Guide</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Track Order</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/919553299133">WhatsApp Us</a></li>
+        <li><a href="#">Email Support</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Magic AI · magic-ai.biz · All rights reserved</span>
+    <span>© 2025 Magic AI · <a href="https://magic-ai.biz">magic-ai.biz</a> · All rights reserved</span>
     <span>Made with 🧡 in India</span>
   </div>
 </footer>
