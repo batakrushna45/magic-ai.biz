@@ -448,11 +448,9 @@
       <h4>Collection</h4>
       <button class="filter-btn active" data-filter="all" onclick="filterProducts('all', this)">All Collections</button>
       <!-- ✏️ EASY EDIT: Change these collection names to match your designs -->
-      <button class="filter-btn" data-filter="galaxy-dreams" onclick="filterProducts('galaxy-dreams', this)">🌌 Galaxy Dreams</button>
-      <button class="filter-btn" data-filter="urban-vibes" onclick="filterProducts('urban-vibes', this)">🏙️ Urban Vibes</button>
-      <button class="filter-btn" data-filter="nature-pulse" onclick="filterProducts('nature-pulse', this)">🌿 Nature Pulse</button>
-      <button class="filter-btn" data-filter="retro-wave" onclick="filterProducts('retro-wave', this)">📻 Retro Wave</button>
-      <button class="filter-btn" data-filter="magic-script" onclick="filterProducts('magic-script', this)">✨ Magic Script</button>
+      <button class="filter-btn" data-filter="dr-series" onclick="filterProducts('dr-series', this)">👕 DR Series</button>
+      <button class="filter-btn" data-filter="star-collection" onclick="filterProducts('star-collection', this)">⭐ Star Collection</button>
+      <button class="filter-btn" data-filter="special-edition" onclick="filterProducts('special-edition', this)">🔥 Special Edition</button>
     </div>
     <div class="filter-group">
       <h4>Price Range</h4>
@@ -685,47 +683,125 @@ const STORE_CONFIG = {
 
   // ✏️ Google Apps Script URL — You'll get this after Step 6 in the setup guide
   // Replace the URL below with your deployed Apps Script web app URL
-  appsScriptUrl: "https://script.google.com/macros/s/AKfycbzi2V5jcd6TUGjyioYXFVsqd7V_RsXSwOslHQ_rOvMtFSsAmmiDVOSMYHP8L0TQvDJKhA/exec",
+  appsScriptUrl: "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec",
 
   // ✏️ Shipping charge in INR (0 = free shipping)
   shippingCharge: 0,
 };
 
 // ╔══════════════════════════════════════════════════════════════╗
-// ║  PRODUCT CATALOG                                            ║
-// ║  To add/edit products: copy a product block and change the  ║
-// ║  values. The 'emoji' is the placeholder until you add images║
+// ║  PRODUCT CATALOG — MAGIC AI STORE                          ║
+// ║  Image files must be named exactly as the id field below   ║
+// ║  e.g. MG01.jpg, MG02.jpg ... placed in /images/ folder     ║
+// ║  To add a product: copy any block, change values, save.    ║
 // ╚══════════════════════════════════════════════════════════════╝
 const PRODUCTS = [
-  // ── GALAXY DREAMS COLLECTION ──
-  { id: "GD001", collection: "galaxy-dreams", collectionLabel: "Galaxy Dreams", emoji: "🌌", name: "Nebula Burst", price: 599, mrp: 799, sizes: { S: 20, M: 35, L: 40, XL: 30, XXL: 15 } },
-  { id: "GD002", collection: "galaxy-dreams", collectionLabel: "Galaxy Dreams", emoji: "⭐", name: "Star Cluster", price: 549, mrp: 749, sizes: { S: 18, M: 32, L: 38, XL: 25, XXL: 12 } },
-  { id: "GD003", collection: "galaxy-dreams", collectionLabel: "Galaxy Dreams", emoji: "🪐", name: "Saturn Rings", price: 649, mrp: 849, sizes: { S: 15, M: 28, L: 35, XL: 20, XXL: 8 } },
-  { id: "GD004", collection: "galaxy-dreams", collectionLabel: "Galaxy Dreams", emoji: "🌠", name: "Meteor Shower", price: 499, mrp: 699, sizes: { S: 22, M: 40, L: 42, XL: 28, XXL: 10 } },
 
-  // ── URBAN VIBES COLLECTION ──
-  { id: "UV001", collection: "urban-vibes", collectionLabel: "Urban Vibes", emoji: "🏙️", name: "City Skyline", price: 599, mrp: 799, sizes: { S: 25, M: 45, L: 50, XL: 35, XXL: 18 } },
-  { id: "UV002", collection: "urban-vibes", collectionLabel: "Urban Vibes", emoji: "🎨", name: "Graffiti King", price: 649, mrp: 849, sizes: { S: 20, M: 38, L: 44, XL: 30, XXL: 14 } },
-  { id: "UV003", collection: "urban-vibes", collectionLabel: "Urban Vibes", emoji: "🛹", name: "Street Rider", price: 549, mrp: 749, sizes: { S: 18, M: 30, L: 36, XL: 22, XXL: 9 } },
-  { id: "UV004", collection: "urban-vibes", collectionLabel: "Urban Vibes", emoji: "🔥", name: "Blaze Street", price: 699, mrp: 899, sizes: { S: 15, M: 25, L: 30, XL: 18, XXL: 6 } },
+  // ── DR SERIES T-SHIRTS ──
+  {
+    id: "MG01",
+    collection: "dr-series",
+    collectionLabel: "DR Series",
+    color: "Black",
+    emoji: "🖤",
+    name: "20 DR Black",
+    price: 3300,
+    mrp: 3999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
+  {
+    id: "MG02",
+    collection: "dr-series",
+    collectionLabel: "DR Series",
+    color: "Blue",
+    emoji: "💙",
+    name: "30 DR Blue",
+    price: 3300,
+    mrp: 3999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
+  {
+    id: "MG03",
+    collection: "dr-series",
+    collectionLabel: "DR Series",
+    color: "Red",
+    emoji: "❤️",
+    name: "40 DR Red",
+    price: 3300,
+    mrp: 3999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
 
-  // ── NATURE PULSE COLLECTION ──
-  { id: "NP001", collection: "nature-pulse", collectionLabel: "Nature Pulse", emoji: "🌿", name: "Forest Breath", price: 499, mrp: 699, sizes: { S: 28, M: 48, L: 55, XL: 38, XXL: 20 } },
-  { id: "NP002", collection: "nature-pulse", collectionLabel: "Nature Pulse", emoji: "🦋", name: "Butterfly Effect", price: 549, mrp: 749, sizes: { S: 22, M: 40, L: 46, XL: 32, XXL: 15 } },
-  { id: "NP003", collection: "nature-pulse", collectionLabel: "Nature Pulse", emoji: "🌊", name: "Ocean Wave", price: 599, mrp: 799, sizes: { S: 20, M: 36, L: 42, XL: 28, XXL: 12 } },
-  { id: "NP004", collection: "nature-pulse", collectionLabel: "Nature Pulse", emoji: "🌻", name: "Sunflower Field", price: 499, mrp: 649, sizes: { S: 25, M: 44, L: 50, XL: 34, XXL: 16 } },
+  // ── STAR COLLECTION ──
+  {
+    id: "MG04",
+    collection: "star-collection",
+    collectionLabel: "Star Collection",
+    color: "Green",
+    emoji: "💚",
+    name: "Rising Star",
+    price: 3300,
+    mrp: 3999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
+  {
+    id: "MG05",
+    collection: "star-collection",
+    collectionLabel: "Star Collection",
+    color: "Red",
+    emoji: "⭐",
+    name: "Super Star",
+    price: 3300,
+    mrp: 3999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
+  {
+    id: "MG06",
+    collection: "star-collection",
+    collectionLabel: "Star Collection",
+    color: "Yellow · Round Neck",
+    emoji: "🌟",
+    name: "Player of the Month",
+    price: 2300,
+    mrp: 2999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
+  {
+    id: "MG07",
+    collection: "star-collection",
+    collectionLabel: "Star Collection",
+    color: "Blue",
+    emoji: "💎",
+    name: "Sapphire Star",
+    price: 3300,
+    mrp: 3999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
 
-  // ── RETRO WAVE COLLECTION ──
-  { id: "RW001", collection: "retro-wave", collectionLabel: "Retro Wave", emoji: "📻", name: "Radio Days", price: 649, mrp: 849, sizes: { S: 18, M: 32, L: 38, XL: 24, XXL: 10 } },
-  { id: "RW002", collection: "retro-wave", collectionLabel: "Retro Wave", emoji: "🕹️", name: "Pixel Blast", price: 599, mrp: 799, sizes: { S: 20, M: 35, L: 40, XL: 28, XXL: 12 } },
-  { id: "RW003", collection: "retro-wave", collectionLabel: "Retro Wave", emoji: "🎵", name: "Synthwave", price: 699, mrp: 899, sizes: { S: 15, M: 28, L: 33, XL: 20, XXL: 8 } },
-  { id: "RW004", collection: "retro-wave", collectionLabel: "Retro Wave", emoji: "📼", name: "VHS Rewind", price: 549, mrp: 749, sizes: { S: 22, M: 38, L: 44, XL: 30, XXL: 14 } },
+  // ── SPECIAL EDITION ──
+  {
+    id: "MG08",
+    collection: "special-edition",
+    collectionLabel: "Special Edition",
+    color: "Black · Orange · Round Neck",
+    emoji: "🔥",
+    name: "Fattu Faddu",
+    price: 2300,
+    mrp: 2999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
+  {
+    id: "MG09",
+    collection: "special-edition",
+    collectionLabel: "Special Edition",
+    color: "Orange",
+    emoji: "🧥",
+    name: "Magic Jacket",
+    price: 5300,
+    mrp: 5999,
+    sizes: { S: 30, M: 30, L: 30, XL: 30, XXL: 30 }
+  },
 
-  // ── MAGIC SCRIPT COLLECTION ──
-  { id: "MS001", collection: "magic-script", collectionLabel: "Magic Script", emoji: "✨", name: "Believe Magic", price: 549, mrp: 749, sizes: { S: 25, M: 45, L: 52, XL: 36, XXL: 18 } },
-  { id: "MS002", collection: "magic-script", collectionLabel: "Magic Script", emoji: "🔮", name: "Crystal Vision", price: 599, mrp: 799, sizes: { S: 20, M: 38, L: 44, XL: 30, XXL: 14 } },
-  { id: "MS003", collection: "magic-script", collectionLabel: "Magic Script", emoji: "💫", name: "Spark & Shine", price: 649, mrp: 849, sizes: { S: 18, M: 32, L: 38, XL: 24, XXL: 10 } },
-  { id: "MS004", collection: "magic-script", collectionLabel: "Magic Script", emoji: "🌟", name: "Golden Script", price: 699, mrp: 899, sizes: { S: 15, M: 26, L: 31, XL: 20, XXL: 8 } },
 ];
 
 // ─────────────────────────────────────────────
@@ -766,13 +842,21 @@ function renderProducts(products) {
     return `
       <div class="product-card" data-id="${p.id}" data-collection="${p.collection}">
         <div class="product-img">
-          ${p.emoji}
+          <img
+            src="images/${p.id}.jpg"
+            alt="${p.name}"
+            style="width:100%;height:100%;object-fit:cover;border-radius:0"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          />
+          <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:72px;background:linear-gradient(135deg,var(--brand-light),#fff8f0)">${p.emoji}</div>
           <span class="stock-badge ${stockClass}">${stockLabel}</span>
           <span class="collection-tag">${p.collectionLabel}</span>
         </div>
         <div class="product-info">
           <div class="product-name">${p.name}</div>
-          <div class="product-design">${p.collectionLabel} Collection</div>
+          <div class="product-design" style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:0.75rem;background:rgba(255,107,0,0.08);color:var(--brand-dark);padding:2px 8px;border-radius:50px;font-weight:600">${p.color}</span>
+          </div>
           <div class="product-price">
             ₹${p.price.toLocaleString('en-IN')}
             <del>₹${p.mrp.toLocaleString('en-IN')}</del>
