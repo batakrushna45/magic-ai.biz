@@ -866,7 +866,9 @@ function renderProducts(products) {
           <div class="product-price">
             ₹${p.price.toLocaleString('en-IN')}
             <del>₹${p.mrp.toLocaleString('en-IN')}</del>
-            <span style="font-size:0.75rem;background:var(--brand-light);color:var(--brand-dark);padding:2px 7px;border-radius:50px;font-weight:700;margin-left:4px">${discount}% OFF</span>
+          </div>
+          <div style="margin-top:4px">
+            <span style="font-size:0.78rem;background:var(--brand-light);color:var(--brand-dark);padding:3px 10px;border-radius:50px;font-weight:700">${discount}% OFF</span>
           </div>
           <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px">Select Size:</div>
           <div class="size-chips">${sizeChips}</div>
