@@ -689,7 +689,6 @@ const STORE_CONFIG = {
   upiId: "9553299133@upi",
   whatsapp: "919553299133",
 
-  // ⚠️  PASTE YOUR APPS SCRIPT URL HERE after Step 7 of setup guide
   appsScriptUrl: "https://script.google.com/macros/s/AKfycbzi2V5jcd6TUGjyioYXFVsqd7V_RsXSwOslHQ_rOvMtFSsAmmiDVOSMYHP8L0TQvDJKhA/exec",
 
   // Shipping charge in INR (keep 0 for free shipping)
@@ -1074,14 +1073,29 @@ async function confirmPayment() {
   };
 
   try {
-    await fetch(STORE_CONFIG.appsScriptUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(orderData),
-      mode: 'no-cors'
+    // Build URL with order data as parameters — most reliable method for Google Apps Script
+    const params = new URLSearchParams({
+      orderId:       orderData.orderId,
+      name:          orderData.name,
+      email:         orderData.email,
+      phone:         orderData.phone,
+      address:       orderData.address,
+      notes:         orderData.notes || '',
+      items:         orderData.items,
+      total:         orderData.total,
+      paymentStatus: orderData.paymentStatus,
+      timestamp:     orderData.timestamp
     });
+    const url = STORE_CONFIG.appsScriptUrl + '?' + params.toString();
+
+    // Use an Image tag trick — works cross-origin without CORS issues
+    const img = new Image();
+    img.src = url;
+
+    // Also try fetch as backup
+    fetch(url, { mode: 'no-cors' }).catch(() => {});
+
   } catch (e) {
-    // Silently fail — order still shows success to user, you can manually check
     console.warn('Could not reach Apps Script. Order ID: ' + orderId);
   }
 
